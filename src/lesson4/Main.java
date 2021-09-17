@@ -1,5 +1,7 @@
 package lesson4;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -11,31 +13,28 @@ public class Main {
         mll.insertFirst(25);
         mll.insertFirst(35);
 
-//        System.out.println(mll.removeFirst());
 
         System.out.println(mll);
+//           Проверка метода indexOf()
+        System.out.println (mll.indexOf (5));
+        System.out.println (mll.indexOf (15));
+        System.out.println (mll.indexOf (35));
+        System.out.println (mll.indexOf (25));
+        System.out.println (mll.indexOf (100));
 
-        mll.insertLast(2);
-        mll.insertLast(22);
+        //   Связанная очередь
+        LinkedQueue linkedQueue = new LinkedQueue ();
 
-        System.out.println(mll);
+        linkedQueue.insert (1);
+        linkedQueue.insert (2);
+        linkedQueue.insert (3);
+        linkedQueue.insert (4);
 
-        mll.insert(2, 777);
-        System.out.println(mll);
-//        System.out.println(mll.removeFirst());
-//        System.out.println(mll);
-//        System.out.println(mll.removeLast());
-//        System.out.println(mll);
 
-        mll.insert(2, 111);
-        mll.insert(2, 22);
-        System.out.println(mll);
-//
-        System.out.println(mll.remove(22));
-        System.out.println(mll);
-
-        for (Integer x : mll) {
-            System.out.println(x);
-        }
+        System.out.println (linkedQueue);
+        System.out.println (linkedQueue.remove ());
+        System.out.println (linkedQueue);
+        System.out.println ( linkedQueue.peekFirst ());
     }
+
 }
