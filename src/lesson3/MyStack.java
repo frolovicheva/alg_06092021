@@ -1,5 +1,6 @@
 package lesson3;
 
+import java.util.Arrays;
 import java.util.EmptyStackException;
 
 public class MyStack<T> {
@@ -27,8 +28,7 @@ public class MyStack<T> {
 
     public void push(T item) {
         if (isFull()) {
-            // расширение массива
-            throw new StackOverflowError();
+            reCapacity ((int)(size * 1.5) + 1);
         }
         list[size] = item;
         size++;
@@ -51,6 +51,10 @@ public class MyStack<T> {
 
     public boolean isFull() {
         return size == list.length;
+    }
+
+    public String toString(){
+        return Arrays.toString (list);
     }
 
     private void reCapacity(int newSize){

@@ -2,43 +2,39 @@ package lesson3;
 
 public class Main {
     public static void main(String[] args) {
-//        MyStack<Integer> myStack = new MyStack<>();
-//
-//        myStack.push(5);
-//        myStack.push(2);
-//        myStack.push(9);
-//        myStack.push(1);
-//        myStack.push(4);
-//
-//        for (int i = 0; i < 5; i++) {
-//            System.out.println(myStack.pop());
-//        }
 
-//        Expression e = new Expression("()+{}+[{}]");
-//        System.out.println(e.checkBracket());
+        // Проверка метода Reverse
+        System.out.println (reverseExpression ("Hello World!"));
+        System.out.println (reverseExpression ("1 2 3 4 5"));
+
+        // Проверка увеличения Capacity в Стеке
+        MyStack <Integer> smallStack = new MyStack<> (1);
+
+        System.out.println (smallStack);
+
+        smallStack.push (1);
+        smallStack.push (2);
+        smallStack.push (3);
+        smallStack.push (4);
+        smallStack.push (5);
 
 
-//        MyQueue<Integer> queue = new MyQueue<>();
-//
-//        queue.insert(3);
-//        queue.insert(2);
-//        queue.insert(7);
-//        queue.insert(4);
-//
-//        for (int i = 0; i < 4; i++) {
-//            System.out.println(queue.remove());
-//        }
+        System.out.println (smallStack);
 
-        MyPriorityQueue<Integer> mpq = new MyPriorityQueue<>();
+    }
 
-        mpq.insert(5);
-        mpq.insert(2);
-        mpq.insert(20);
-        mpq.insert(21);
-        mpq.insert(4);
 
-        for (int i = 0; i < 5; i++) {
-            System.out.println(mpq.remove());
+    public static String reverseExpression (String exp){
+        MyStack<Character> stack = new MyStack<>(exp.length());
+        for (int i = 0; i < exp.length(); i++) {
+            char ch = exp.charAt(i);
+            stack.push(ch);
         }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < exp.length(); i++) {
+            sb.append(stack.pop ());
+        }
+        return sb.toString();
+
     }
 }
