@@ -152,6 +152,24 @@ public class MyLinkedList<T> implements Iterable<T> {
         size++;
     }
 
+    public int indexOf(T item){
+        if (isEmpty()) {
+            return -1;
+        }
+        if (getFirst().equals(item)) {
+           return 0;
+        }
+        Node current = first;
+        for (int i = 0; i < size; i++) {
+            if (current.getValue ().equals (item)){
+                return i;
+            }
+            current = current.getNext ();
+        }
+        return -1;
+
+    }
+
     public boolean remove(T item) {
         if (isEmpty()) {
             return false;
