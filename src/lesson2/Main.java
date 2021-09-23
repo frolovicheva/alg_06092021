@@ -63,20 +63,30 @@ public class Main {
 //        msal.add(3);
 //        msal.add(7);
 //        msal.add(5);
+//        msal.add(5);
 //
 //        System.out.println(msal);
-//        System.out.println(msal.binaryFind(7));
+////        System.out.println(msal.binaryFind(7));
+//        System.out.println(msal.recBynaryFind(5));
 
-        int n = 10;
+        int n = 10000000;
         Random random = new Random();
         MyArrayList<Integer> mal = new MyArrayList<>(n);
         for (int i = 0; i < n; i++) {
-            mal.add(random.nextInt(10));
+            mal.add(random.nextInt(1000));
         }
-        System.out.println(mal);
-//        mal.selectionSort();
-//        mal.insertionSort();
-        mal.bubbleSort();
-        System.out.println(mal);
+
+        long begin = System.currentTimeMillis();
+
+//        System.out.println(mal);
+//        mal.selectionSort(); // 11950 ms
+//        mal.insertionSort(); // 4747 ms
+//        mal.bubbleSort();  // 33680 ms
+        mal.quickSort(); // 86 ms  O(n log n)
+//        System.out.println(mal);
+
+        long end = System.currentTimeMillis();
+        System.out.printf("Time: %d ms", end - begin);
+
     }
 }
