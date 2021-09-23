@@ -2,20 +2,27 @@ package lesson5;
 
 public class Main {
     public static void main(String[] args) {
-//        System.out.println(fact(5));
-//        System.out.println(recFact(5));
 
-//        System.out.println(fibo(100));
-//        System.out.println(recFibo(10));
+        System.out.println (raiseToPower (2,0)); //Проверка возведения в степень, простым и рекурсивным методами
+        System.out.println (raiseToPower (2,8));
+        System.out.println (recRaiseToPower (2,0));
+        System.out.println (recRaiseToPower (2,8));
 
-//        System.out.println(triangleNum(5));
-//        System.out.println(recTriangleNum(5));
+    }
+    //Метод возведения в степень рекурсия
+    public static int recRaiseToPower(int a, int b) {
+        if (b == 0) {
+            return 1;
+        }
+        return recRaiseToPower(a, b - 1) * a;
+    }
 
-//        System.out.println(multiply(3, 8));
-//        System.out.println(recMultiply(3, 8));
-
-        reversPrint("qwerty".toCharArray());
-
+    public static int raiseToPower(int a, int b) {
+        int sum = 1;
+        for (int i = 0; i < b; i++) {
+            sum *= a;
+        }
+        return sum;
     }
 
     public static void reversPrint(char[] arr){
