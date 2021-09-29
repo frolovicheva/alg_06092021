@@ -1,7 +1,11 @@
 package lesson7;
 
+import lesson4.MyLinkedList;
+
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Graph {
     private int vertexCount;
@@ -35,10 +39,31 @@ public class Graph {
         if (v1 < 0 || v2 < 0 || v1 >= vertexCount || v2 >= vertexCount) {
             throw new IllegalArgumentException();
         }
-        adjList[v1].add(v2);
-        if (v1 != v2) {
+        if(!adjList[v1].contains (v2)){ //Проверка на существование такого элемента в списке
+            adjList[v1].add(v2);
+        }
+
+        if (v1 != v2 && !adjList[v2].contains (v1)) {
             adjList[v2].add(v1);
         }
         edgeCount++;
+    }
+
+   public void setRandomEdges(){
+       Random random = new Random();
+       for (int i = 0; i < vertexCount; i++) {
+           int v1 = random.nextInt (vertexCount);
+           int v2 = random.nextInt (vertexCount);
+           addEdge (v1,v2);
+       }
+   }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Список смежности: " + "\n");
+        for (int i = 0; i < adjList.length; i++) {
+            sb.append (i).append ("-").append (getAdjList (i)).append ("\n");
+        }
+        return sb.toString();
     }
 }
