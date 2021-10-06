@@ -1,26 +1,26 @@
 package lesson7;
 
+import lesson7.home_work.Breadth;
+import lesson7.home_work.Depth;
+
+import java.util.LinkedList;
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        Graph graph = new Graph(5);
 
-        graph.addEdge(1, 2);
-        graph.addEdge(0, 4);
-        graph.addEdge(1, 4);
-        graph.addEdge(1, 3);
-        graph.addEdge(1, 0);
+        Graph gr = new Graph(10);//задается граф из 10 вершин
+        gr.setRandomEdges ();//задаются ребра
+        System.out.println (gr.toString ());//toString - посмотреть список смежности
 
-//        System.out.println(graph.getVertexCount());
-//        System.out.println(graph.getEdgeCount());
-//        System.out.println(graph.getAdjList(4));
-
-//        DepthFirstPath dfp = new DepthFirstPath(graph, 2);
-//        System.out.println(dfp.hasPathTo(0));
-//        System.out.println(dfp.pathTo(0));
-
-        BreadthFirstPath bfp = new BreadthFirstPath(graph, 2);
-        System.out.println(bfp.hasPathTo(0));
-        System.out.println(bfp.pathTo(0));
-
+        Random random = new Random ();
+        System.out.println ("Кратчайший путь:");
+        for (int i = 0; i < gr.getVertexCount (); i++) {
+            Breadth breadth = new Breadth (gr,i);
+            int vertexDist = random.nextInt (gr.getVertexCount ());//рандомный выбор вершины назначения
+            if (breadth.hasPathTo (vertexDist) && i != vertexDist){
+                System.out.println ("От " + i + " до " +  vertexDist + " = " + breadth.pathTo (vertexDist));
+            }
+        }
     }
 }
